@@ -6,26 +6,26 @@ using System.Text;
 
 namespace ServiceApplication.Services
 {
-    public class HumanServices
+    public class UserServices
     {
-        private readonly HumanRepository _humanRepository = new HumanRepository();
+        private readonly UserRepository _userRepository = new UserRepository();
 
-        public DomainModel.Human GetById (int id)
+        public DomainModel.User GetById (int id)
         {
-            var h1 = _humanRepository.GetById(id);
+            var h1 = _userRepository.GetById(id);
 
             return h1.ToDomain();
         }
 
-        public ICollection<DomainModel.Human> GetAll ()
+        public ICollection<DomainModel.User> GetAll ()
         {
-            var humanList = new List<SQLModel.Human>()
+            var userList = new List<SQLModel.User>()
             {
                 //new SQLModel.Human { Email = "some@email", Id = 1, Name = "Name1" },
                 //new SQLModel.Human { Email = "some@email", Id = 2, Name = "Name2" },
                 //new SQLModel.Human { Email = "some@email", Id = 3, Name = "Name3" }
         };
-            return humanList.ToDomain();
+            return userList.ToDomain();
         }
     }
 }

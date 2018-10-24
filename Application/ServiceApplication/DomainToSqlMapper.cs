@@ -7,17 +7,17 @@ namespace ApplicationServices
 {
     public static class DomainToSqlMapper
     {
-        public static DomainModel.Human ToDomain(this SQLModel.Human sqlModel)
+        public static DomainModel.User ToDomain(this SQLModel.User sqlModel)
         {
-            return new DomainModel.Human
+            return new DomainModel.User
             {
                 Email = sqlModel.Email,
-                Id = sqlModel.UserId,
-                Name = sqlModel.Name
+                Id = sqlModel.Id,
+                Password = sqlModel.Password
             };
         }
 
-        public static ICollection<DomainModel.Human> ToDomain(this ICollection<SQLModel.Human> sqlCollection)
+        public static ICollection<DomainModel.User> ToDomain(this ICollection<SQLModel.User> sqlCollection)
         {
             return sqlCollection.Select(m => m.ToDomain()).ToList();
         }

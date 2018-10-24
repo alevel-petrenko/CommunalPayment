@@ -11,7 +11,7 @@ namespace Client.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private HumanServices _humanServices = new HumanServices();
+        private UserServices _humanServices = new UserServices();
 
         //[HttpGet]
         //public IActionResult Get()
