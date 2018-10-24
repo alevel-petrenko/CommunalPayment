@@ -9,9 +9,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\SQLModels\SQLModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Net.Http.Headers">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.net.http.headers\2.1.1\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
