@@ -7,12 +7,14 @@ create table [User] (
 	[Password] nvarchar(40) NOT NULL)
 
 create table UserData (
-	Id bigint Primary Key IDENTITY(1,1),
-	--UserId bigint,
+	Id bigint Primary Key,
 	FirstName nvarchar(20) NOT NULL,
 	LastName nvarchar(40) NOT NULL,
-	PhoneNumber nvarchar(40) NOT NULL)
-	--Constraint FK_User Foreign key (UserId) References [User](UserId))
+	PhoneNumber nvarchar(40) NOT NULL,
+	AddressId int,
+	Constraint FK_User Foreign key (Id) References [User](UserId)
+    ON DELETE CASCADE    
+    ON UPDATE CASCADE)
 
 create table Service (
 	Id bigint Primary Key IDENTITY(1,1),
@@ -46,16 +48,21 @@ insert into [User]
 values ('vitya@gmail.com', '/*-+0]')
 
 --adding UserData
-insert into [UserData] (FirstName, LastName, PhoneNumber)
-values ('Terry', 'John', '+7950 78981230')
-insert into [UserData] (FirstName, LastName, PhoneNumber)
-values ('Rodrigez', 'James', '+4381 56679118')
-insert into [UserData] (FirstName, LastName, PhoneNumber)
-values ('Kernose', 'Zigmund', '+380 671182121')
-insert into [UserData] (FirstName, LastName, PhoneNumber)
-values ('King', 'Steven', '+780 671199999')
-insert into [UserData] (FirstName, LastName, PhoneNumber)
-values ('Yaya', 'Ture', '+5180 671144421')
+insert into [UserData]
+values ((Select UserId from [User] where [User].Email = 'terry@gmail.com'), 
+'Terry', 'John', '+7950 78981230', '1')
+insert into [UserData]
+values ((Select UserId from [User] where [User].Email = 'james@gmail.com'), 
+'Rodrigez', 'James', '+4381 56679118', '2')
+insert into [UserData]
+values ((Select UserId from [User] where [User].Email = 'gepard69@gmail.com'), 
+'Kernose', 'Zigmund', '+380 671182121', '3')
+insert into [UserData]
+values ((Select UserId from [User] where [User].Email = 'dopa@gmail.com'), 
+'King', 'Steven', '+780 671199999', '4')
+insert into [UserData]
+values ((Select UserId from [User] where [User].Email = 'vitya@gmail.com'), 
+'Yaya', 'Ture', '+5180 671144421', '5')
 
 -- adding Services
 insert into Service
@@ -68,3 +75,15 @@ insert into Service
 values ('Интеренет', 'Ощадбанк', 'Оплата за услуги интеренет')
 insert into Service
 values ('ДомофонСервис', 'Ощадбанк', 'Оплата за домофон')
+
+--adding Address
+insert into Address
+values ('Улица Клочковская', '244', 154)
+insert into Address
+values ('Улица 23-го Августа', '26', 10)
+insert into Address
+values ('Улица Морозова', '7', null)
+insert into Address
+values ('Бульвар Богдана Хмельницкого', 32, null)
+insert into Address
+values ('Проспект Московский', '202/2', 59)

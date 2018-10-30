@@ -12,7 +12,7 @@ namespace ApplicationServices
             return new DomainModel.User
             {
                 Email = sqlModel.Email,
-                Id = sqlModel.Id,
+                UserId = sqlModel.UserId,
                 Password = sqlModel.Password
             };
         }
