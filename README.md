@@ -6,4 +6,4 @@ Kharkiv portal for paying utilities
 - UI - Angular
 
 - Project - Short description
-- Project Requirements
+- Project Requirements are in the requirements.txt
