@@ -1,5 +1,5 @@
 # CommunalPayment
-Kharkiv portal for paying communal services
+Kharkiv portal for paying utilities
 
 - Backend part: .Net Core
 - Database: ADO.Net
