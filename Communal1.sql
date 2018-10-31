@@ -11,7 +11,6 @@ create table UserData (
 	FirstName nvarchar(20) NOT NULL,
 	LastName nvarchar(40) NOT NULL,
 	PhoneNumber nvarchar(40) NOT NULL,
-	AddressId int,
 	Constraint FK_User Foreign key (Id) References [User](UserId)
     ON DELETE CASCADE    
     ON UPDATE CASCADE)
@@ -26,64 +25,101 @@ create table Address (
 	Id bigint Primary Key IDENTITY(1,1),
 	StreetName nvarchar(50) NOT NULL,
 	HouseNumber nvarchar(10) NOT NULL,
-	Apartment int)
+	Apartment int,
+	UserId bigint,
+	Constraint FK_UserId Foreign key (UserId) References UserData(Id))
+
+create table [Address&Service] (
+	Id bigint Primary key Identity(1,1),
+	AddressId bigint NOT NULL,
+	ServiceId bigint NOT NULL)
 
 create table [Transaction] (
-	TransId bigint Primary Key Identity(1,1),
+	TransactId bigint Primary Key Identity(1,1),
 	UserId int NOT NULL,
 	ServiceId int NOT NULL,
 	Amount decimal NOT NULL,
-	PaymentDate date NOT NULL)
+	PaymentDate DATETIME NOT NULL)
 
 --adding Users
 insert into [User]
-values ('terry@gmail.com', 'p@ss')
+values ('jerry@gmail.com', 'p@ss')
 insert into [User]
-values ('james@gmail.com', 'word')
+values ('sunshine@gmail.com', 'word')
 insert into [User]
 values ('gepard69@gmail.com', 'par0l')
 insert into [User]
-values ('dopa@gmail.com', '012345q')
+values ('alex.bond@gmail.com', '012345q')
 insert into [User]
 values ('vitya@gmail.com', '/*-+0]')
 
 --adding UserData
 insert into [UserData]
-values ((Select UserId from [User] where [User].Email = 'terry@gmail.com'), 
-'Terry', 'John', '+7950 78981230', '1')
+--(Select UserId from [User] where [User].Email = 'terry@gmail.com')
+values (1, 'Jerry', 'John', '+7950 78981230')
 insert into [UserData]
-values ((Select UserId from [User] where [User].Email = 'james@gmail.com'), 
-'Rodrigez', 'James', '+4381 56679118', '2')
+values (2, 'James', 'Rodrigez', '+4381 56679118')
 insert into [UserData]
-values ((Select UserId from [User] where [User].Email = 'gepard69@gmail.com'), 
-'Kernose', 'Zigmund', '+380 671182121', '3')
+values (3, 'Sigizmund', 'Kernoziskiy', '+380 671182121')
 insert into [UserData]
-values ((Select UserId from [User] where [User].Email = 'dopa@gmail.com'), 
-'King', 'Steven', '+780 671199999', '4')
+values (4, 'Steven', 'King', '+780 671199999')
 insert into [UserData]
-values ((Select UserId from [User] where [User].Email = 'vitya@gmail.com'), 
-'Yaya', 'Ture', '+5180 671144421', '5')
+values (5, 'Victor', 'Glukhoverov', '+5180 671144421')
 
 -- adding Services
 insert into Service
-values ('ХарьковГаз Сбыт', 'Ощадбанк', 'Оплата газоснабжения')
+values ('KharkivGas Sbyt', 'Oschadbank', 'Payment for gas')
 insert into Service
-values ('Харьковоблэнерго', 'Ощадбанк', 'Оплата электроэнергии')
+values ('KharkivOblEnergo', 'Oschadbank', 'Payment for electricity')
 insert into Service
-values ('Водоканал', 'Ощадбанк', 'Оплата за водоснабжение и канализацию')
+values ('Vodokanal', 'Oschadbank', 'Payment for water')
 insert into Service
-values ('Интеренет', 'Ощадбанк', 'Оплата за услуги интеренет')
+values ('Internet', 'Oschadbank', 'Payment for Internet service')
 insert into Service
-values ('ДомофонСервис', 'Ощадбанк', 'Оплата за домофон')
+values ('DomophoneService', 'Oschadbank', 'Payment for domophone')
 
 --adding Address
 insert into Address
-values ('Улица Клочковская', '244', 154)
+values ('Klochkovskaya str.', '244', 154)
 insert into Address
-values ('Улица 23-го Августа', '26', 10)
+values ('23rd of august str.', '26', 10)
 insert into Address
-values ('Улица Морозова', '7', null)
+values ('Morozova str.', '7', null)
 insert into Address
-values ('Бульвар Богдана Хмельницкого', 32, null)
+values ('Bohdan Khmelnytsky boul.', 32, null)
 insert into Address
-values ('Проспект Московский', '202/2', 59)
+values ('Moscow Ave.', '202/2', 59)
+
+--adding Address and Service
+insert into [Address&Service]
+values (1, 4)
+insert into [Address&Service]
+values (2, 4)
+insert into [Address&Service]
+values (3, 4)
+insert into [Address&Service]
+values (4, 1)
+insert into [Address&Service]
+values (4, 2)
+insert into [Address&Service]
+values (4, 3)
+insert into [Address&Service]
+values (4, 4)
+insert into [Address&Service]
+values (5, 4)
+
+--adding Tras
+insert into [Transaction]
+values (1, 4, 100, '2018-09-15 11:37:10')
+insert into [Transaction]
+values (2, 4, 250, '2018-05-11 15:07:50')
+insert into [Transaction]
+values (3, 4, 150, '2018-10-20 7:12:15')
+insert into [Transaction]
+values (4, 1, 740, '2018-02-03 20:14:10')
+insert into [Transaction]
+values (4, 2, 1040, '2018-02-03 20:16:10')
+insert into [Transaction]
+values (4, 4, 440, '2018-02-03 20:18:10')
+insert into [Transaction]
+values (5, 4, 75, '2018-03-09 23:20:40')
