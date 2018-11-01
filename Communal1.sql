@@ -30,9 +30,9 @@ create table Address (
 	Constraint FK_UserId Foreign key (UserId) References UserData(Id))
 
 create table [Address&Service] (
-	Id bigint Primary key Identity(1,1),
 	AddressId bigint NOT NULL,
-	ServiceId bigint NOT NULL)
+	ServiceId bigint NOT NULL,
+	PRIMARY KEY (AddressId, ServiceId))
 
 create table [Transaction] (
 	TransactId bigint Primary Key Identity(1,1),
@@ -66,7 +66,7 @@ values (4, 'Steven', 'King', '+780 671199999')
 insert into [UserData]
 values (5, 'Victor', 'Glukhoverov', '+5180 671144421')
 
--- adding Services
+-- adding Service
 insert into Service
 values ('KharkivGas Sbyt', 'Oschadbank', 'Payment for gas')
 insert into Service
@@ -80,15 +80,15 @@ values ('DomophoneService', 'Oschadbank', 'Payment for domophone')
 
 --adding Address
 insert into Address
-values ('Klochkovskaya str.', '244', 154)
+values ('Klochkovskaya str.', '244', 154, 2)
 insert into Address
-values ('23rd of august str.', '26', 10)
+values ('23rd of August str.', '26', 10, 5)
 insert into Address
-values ('Morozova str.', '7', null)
+values ('Morozova str.', '7', null, 1)
 insert into Address
-values ('Bohdan Khmelnytsky boul.', 32, null)
+values ('Bohdan Khmelnytsky boul.', 32, null, 3)
 insert into Address
-values ('Moscow Ave.', '202/2', 59)
+values ('Moscow ave.', '202/2', 59, 4)
 
 --adding Address and Service
 insert into [Address&Service]
