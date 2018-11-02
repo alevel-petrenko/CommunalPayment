@@ -13,11 +13,11 @@ namespace Client.Controllers
     {
         private UserServices _userServices = new UserServices();
 
-        //[HttpGet]
-        //public IActionResult Get()
-        //{
-        //    return Ok;
-        //}
+        [HttpGet()]
+        public IActionResult Get()
+        {
+            return Ok (_userServices.GetAll());
+        }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
@@ -27,11 +27,11 @@ namespace Client.Controllers
         }
 
         // POST api/values
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
 
-        //}
+        }
 
         // PUT api/values/5
         [HttpPut("{id}")]

@@ -3,6 +3,9 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web.Http;
+using Newtonsoft.Json;
+//using System.Web.Script.Serialization;
 
 namespace ServiceApplication.Services
 {
@@ -17,11 +20,12 @@ namespace ServiceApplication.Services
             return user.ToDomain();
         }
 
-        //public ICollection<DomainModel.User> GetAll ()
-        //{
-        //    var userList = _userRepository.GetAll();
+        public string GetAll()
+        {
+            var userList = _userRepository.GetAll();
+            var jsonList = JsonConvert.SerializeObject(userList);
 
-        //    return userList<>.ToDomain();
-        //}
+            return jsonList;
+        }
     }
 }

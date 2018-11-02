@@ -28,18 +28,18 @@ namespace Repository
             }
         }
 
-        public string GetAll( )
+        public ICollection GetAll( )
         {
             string _getAllUsers = $"select * from [User]";
 
             using (var con = new SqlConnection(ConnStr))
             {
-                var users = con.Query<User>(_getAllUsers);
+                var users = con.Query<User>(_getAllUsers).ToList();
                 return users;
             }
         }
 
-        public void Update (int id, string email, string password)
+    public void Update (int id, string email, string password)
         {
             string _updateUser = $"update User SET Email = {email}, Password = {password} where UserId = {id}";
 
