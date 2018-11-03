@@ -18,12 +18,12 @@ namespace Repository
         public User GetById (int id)
         {
             string _getUserById = $"select * from [User] where UserId = {id}";
+            string _cond = $"SELECT * FROM [User] WHERE EXISTS (SELECT UserId FROM[User] WHERE UserId= '{id}')";
 
             using (var con = new SqlConnection(ConnStr))
             {
                 //using Dapper/ <User> is a table from DB
                 var user = con.Query<User>(_getUserById).FirstOrDefault();
-
                 return user;
             }
         }
@@ -39,7 +39,17 @@ namespace Repository
             }
         }
 
-    public void Update (int id, string email, string password)
+        public void AddNewUser(string email, string password)
+        {
+            string _addingNewUser = $"insert into [User] values('{email}', '{password}')";
+
+            using (var con = new SqlConnection(ConnStr))
+            {
+                con.Query<User>(_addingNewUser);
+            }
+        }
+
+        public void Update (int id, string email, string password)
         {
             string _updateUser = $"update User SET Email = {email}, Password = {password} where UserId = {id}";
 

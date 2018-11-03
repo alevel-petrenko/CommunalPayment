@@ -27,5 +27,10 @@ namespace ServiceApplication.Services
 
             return jsonList;
         }
+
+        public void AddUser (string email, string password)
+        {
+            _userRepository.AddNewUser(email, password);
+        }
     }
 }

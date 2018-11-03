@@ -22,15 +22,14 @@ namespace Client.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-
             return Ok(_userServices.GetById(id));
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] string email, string password)
         {
-
+            _userServices.AddUser(email, password);
         }
 
         // PUT api/values/5
