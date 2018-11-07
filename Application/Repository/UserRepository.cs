@@ -39,7 +39,7 @@ namespace Repository
             }
         }
 
-        public void AddNewUser(SQLModel.User newUser)
+        public void AddUser(SQLModel.User newUser)
         {
             string _addingNewUser = $"insert into [User] values('{newUser.Email}', '{newUser.Password}')";
 
@@ -49,9 +49,9 @@ namespace Repository
             }
         }
 
-        public void Update (int id, string email, string password)
+        public void UpdateUser (int id, string value)
         {
-            string _updateUser = $"update User SET Email = {email}, Password = {password} where UserId = {id}";
+            string _updateUser = null; //= $"update User SET Email = {email}, Password = {password} where UserId = {id}";
 
             using (var con = new SqlConnection(ConnStr))
             {

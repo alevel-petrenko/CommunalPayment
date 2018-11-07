@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceApplication\ServiceApplication.csproj" />
+    <ProjectReference Include="..\SQLModels\SQLModel.csproj" />
   </ItemGroup>
 
 </Project>

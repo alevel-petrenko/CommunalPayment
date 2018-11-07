@@ -29,10 +29,14 @@ namespace ServiceApplication.Services
             return jsonList;
         }
 
-        public void AddUser (string complex)
+        public void AddUser (SQLModel.User user)
         {
-            var newUser = JsonConvert.DeserializeObject<SQLModel.User>(complex);
-            _userRepository.AddNewUser(newUser);
+            _userRepository.AddUser(user);
+        }
+
+        public void UpdateUser(int id, string value)
+        {
+            _userRepository.UpdateUser(id, value);
         }
     }
 }
