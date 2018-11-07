@@ -74,9 +74,15 @@ values ('KharkivOblEnergo', 'Oschadbank', 'Payment for electricity')
 insert into Service
 values ('Vodokanal', 'Oschadbank', 'Payment for water')
 insert into Service
-values ('Internet', 'Oschadbank', 'Payment for Internet service')
+values ('Internet Volya', 'Oschadbank', 'Payment for Internet service')
 insert into Service
-values ('DomophoneService', 'Oschadbank', 'Payment for domophone')
+values ('Khirkiv intercom service', 'Oschadbank', 'Payment for intercom service')
+insert into Service
+values ('Kharkiv heating networks', 'Oschadbank', 'Payment for central home heating')
+insert into Service
+values ('Flat rent', 'Oschadbank', 'Payment for flat')
+insert into Service
+values ('Removing of household waste', 'Oschadbank', 'Payment for cleaning yards and removing of household waste')
 
 --adding Address
 insert into Address

@@ -9,7 +9,7 @@ namespace Client.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class UserController : ControllerBase
     {
         private UserServices _userServices = new UserServices();
 
@@ -27,9 +27,10 @@ namespace Client.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string email, string password)
+        public void Post([FromBody] string complex) //email, string password)
         {
-            _userServices.AddUser(email, password);
+
+            _userServices.AddUser(complex);
         }
 
         // PUT api/values/5

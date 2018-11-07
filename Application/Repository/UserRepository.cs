@@ -28,7 +28,7 @@ namespace Repository
             }
         }
 
-        public ICollection GetAll( )
+        public ICollection<User> GetAll( )
         {
             string _getAllUsers = $"select * from [User]";
 
@@ -39,9 +39,9 @@ namespace Repository
             }
         }
 
-        public void AddNewUser(string email, string password)
+        public void AddNewUser(SQLModel.User newUser)
         {
-            string _addingNewUser = $"insert into [User] values('{email}', '{password}')";
+            string _addingNewUser = $"insert into [User] values('{newUser.Email}', '{newUser.Password}')";
 
             using (var con = new SqlConnection(ConnStr))
             {

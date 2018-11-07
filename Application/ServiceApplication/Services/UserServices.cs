@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web.Http;
 using Newtonsoft.Json;
+using System.Collections;
 //using System.Web.Script.Serialization;
 
 namespace ServiceApplication.Services
@@ -23,14 +24,15 @@ namespace ServiceApplication.Services
         public string GetAll()
         {
             var userList = _userRepository.GetAll();
-            var jsonList = JsonConvert.SerializeObject(userList);
+            var jsonList = JsonConvert.SerializeObject(userList.ToDomain());
 
             return jsonList;
         }
 
-        public void AddUser (string email, string password)
+        public void AddUser (string complex)
         {
-            _userRepository.AddNewUser(email, password);
+            var newUser = JsonConvert.DeserializeObject<SQLModel.User>(complex);
+            _userRepository.AddNewUser(newUser);
         }
     }
 }
