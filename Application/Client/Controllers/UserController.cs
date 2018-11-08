@@ -46,8 +46,11 @@ namespace Client.Controllers
 
         // DELETE api/user/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public string Delete(int id)
         {
+            _userServices.DeleteUser(id);
+
+            return "User has been deleted!";
         }
     }
 }

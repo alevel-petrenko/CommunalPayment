@@ -59,5 +59,15 @@ namespace Repository
                 con.Query<User>(_updateUser);
             }
         }
+
+        public void DeleteUser (int id)
+        {
+            string _deleteUser = "";
+
+            using (SqlConnection connection = new SqlConnection(_deleteUser))
+            {
+                connection.Query(_deleteUser);
+            }
+        }
     }
 }

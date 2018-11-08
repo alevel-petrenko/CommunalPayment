@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
-    <ProjectReference Include="..\SQLModels\SQLModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>

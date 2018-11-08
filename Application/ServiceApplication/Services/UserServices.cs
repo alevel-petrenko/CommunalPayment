@@ -41,6 +41,11 @@ namespace ServiceApplication.Services
             _userRepository.UpdateUser(_GetAndUpdateUser(id, updateUser));
         }
 
+        public void DeleteUser (int id)
+        {
+            _userRepository.DeleteUser(id);
+        }
+
         private SQLModel.User _GetAndUpdateUser(int id, SQLModel.User updateUser)
         {
             var user = _userRepository.GetById(id);
