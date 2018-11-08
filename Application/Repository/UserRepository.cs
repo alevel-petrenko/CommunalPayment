@@ -49,13 +49,14 @@ namespace Repository
             }
         }
 
-        public void UpdateUser (int id, string value)
+        public void UpdateUser (SQLModel.User user)
         {
-            string _updateUser = null; //= $"update User SET Email = {email}, Password = {password} where UserId = {id}";
+            string _updateUser = $"update [User] SET Email = '{user.Email}', Password = '{user.Password}' where UserId = {user.UserId}";
+            //UPDATE table_name SET column1 = value1, column2 = value2, WHERE condition;
 
             using (var con = new SqlConnection(ConnStr))
             {
-                var user = con.Query<User>(_updateUser);
+                con.Query<User>(_updateUser);
             }
         }
     }

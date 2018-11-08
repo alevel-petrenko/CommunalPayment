@@ -30,16 +30,18 @@ namespace Client.Controllers
 
         // POST api/user
         [HttpPost]
-        public void Post([FromBody]User user)
+        public string Post([FromBody] User user)
         {
             _userServices.AddUser(user);
+            return ("User has been added!");
         }
 
         // PUT api/user/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public string Put(int id, [FromBody] User user)
         {
-            _userServices.UpdateUser(id, value);
+            _userServices.UpdateUser(id, user);
+            return ("User has been updated!");
         }
 
         // DELETE api/user/5

@@ -34,9 +34,20 @@ namespace ServiceApplication.Services
             _userRepository.AddUser(user);
         }
 
-        public void UpdateUser(int id, string value)
+        public void UpdateUser(int id, SQLModel.User updateUser)
         {
-            _userRepository.UpdateUser(id, value);
+            var user = GetById(id);
+
+            _userRepository.UpdateUser(_GetAndUpdateUser(id, updateUser));
+        }
+
+        private SQLModel.User _GetAndUpdateUser(int id, SQLModel.User updateUser)
+        {
+            var user = _userRepository.GetById(id);
+            user.Email = updateUser.Email;
+            user.Password = updateUser.Password;
+
+            return user;
         }
     }
 }
