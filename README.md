@@ -5,5 +5,5 @@ Kharkiv portal for paying utilities
 - Database: ADO.Net
 - UI - Angular
 
-- Project - Short description
+- Project - city payment service, which helps easily pay bills and store all receipts in one place
 - Project Requirements are in the requirements.txt
