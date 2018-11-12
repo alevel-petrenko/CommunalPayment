@@ -62,9 +62,9 @@ namespace Repository
 
         public void DeleteUser (int id)
         {
-            string _deleteUser = "";
+            string _deleteUser = $"delete from [User] where UserId = {id}";
 
-            using (SqlConnection connection = new SqlConnection(_deleteUser))
+            using (SqlConnection connection = new SqlConnection(ConnStr))
             {
                 connection.Query(_deleteUser);
             }
